@@ -11,5 +11,7 @@
             "Payment\\PaymentSdk\\": "src/"
         }
     },
+    "description": "demo",
+    "minimum-stability": "dev",
     "require": {}
 }
