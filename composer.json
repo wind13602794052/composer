@@ -1,0 +1,10 @@
+{
+    "name": "getway/pay-sdk",
+    "authors": [
+        {
+            "name": "wind",
+            "email": "254044378@qq.com"
+        }
+    ],
+    "require": {}
+}
