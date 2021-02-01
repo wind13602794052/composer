@@ -153,8 +153,8 @@ class PayClient extends Model
      * @author wind <254044378@qq.com>
      */
     public function setPrefixUrl($url)
-    {
-        $prefix = env('payUrl', 'www.lumen.com');
+    {   
+        $prefix = env('GATEWAY_URL', 'www.lumen.com');
         return $prefix . $url;
     }
 
