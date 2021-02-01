@@ -1,5 +1,5 @@
 {
-    "name": "gateway/pay-sdk",
+    "name": "payment-gateway/pay-sdk",
     "authors": [
         {
             "name": "wind",
@@ -11,7 +11,7 @@
             "Payment\\PaymentSdk\\": "src/"
         }
     },
-    "description": "demo",
+    "description": "支付集成网关",
     "minimum-stability": "dev",
     "require": {}
 }
