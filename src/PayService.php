@@ -69,4 +69,21 @@ class PayService
         );
         return  PayResponse::fromModel($json);
     }
+    /**
+     * 支付订单
+     *
+     * @param string $ace_store_id 站点id
+     * @param string $country  国家id
+     * @param string $currency 币种编码
+     * @author wind <254044378@qq.com>
+     */
+    public static function paymentMethods($params)
+    {   
+        $json = PayClient::executeCall(
+            "/api/paymentMethods?" . http_build_query($params),
+            "GET",
+            $params
+        );
+        return  PayResponse::fromModel($json);
+    }
 }   

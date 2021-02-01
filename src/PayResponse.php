@@ -28,7 +28,7 @@ class PayResponse extends Model
             $msg = $data['message'] ?? '';
             $this->error = $msg ?? '未知错误';
         }
-        if (is_array($data['data'])) {
+        if (!empty($data['data']) && is_array($data['data'])) {
             foreach ($data['data'] as $key => $value) {
                 $this->$key = $value;
             }

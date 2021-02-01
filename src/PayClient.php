@@ -15,7 +15,7 @@ class PayClient extends Model
         CURLOPT_CONNECTTIMEOUT => 10,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT => 30,    // maximum number of seconds to allow cURL functions to execute
-        CURLOPT_USERAGENT => 'Getway-SDK',
+        CURLOPT_USERAGENT => 'Gateway-SDK',
         CURLOPT_HTTPHEADER => array(),
     );
 
