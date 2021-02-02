@@ -70,7 +70,7 @@ class PayService
         return  $isJson ? $json : PayResponse::fromModel($json);
     }
     /**
-     * 支付订单
+     * 获取支付方式
      *
      * @param string $ace_store_id 站点id
      * @param string $country  国家id
