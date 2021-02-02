@@ -22,7 +22,7 @@ class PayService
      * @param string $currency 币种
      * @author wind <254044378@qq.com>
      */
-    public static function createOrder($params)
+    public static function createOrder($params, $isJson = false)
     {
 
         $json = PayClient::executeCall(
@@ -30,7 +30,7 @@ class PayService
             "POST",
             $params
         );
-        return  PayResponse::fromModel($json);
+        return  $isJson ? $json : PayResponse::fromModel($json);
     }
 
     /**
@@ -41,14 +41,14 @@ class PayService
      * @param string $payment_id paypal支付的payment_id
      * @author wind <254044378@qq.com>
      */
-    public static function queryOtherOrder($params)
+    public static function queryOtherOrder($params, $isJson = false)
     {
         $json = PayClient::executeCall(
             "/api/paymentOrder/query",
             "POST",
             $params
         );
-        return  PayResponse::fromModel($json);
+        return  $isJson ? $json : PayResponse::fromModel($json);
     }
     /**
      * 支付订单
@@ -60,14 +60,14 @@ class PayService
      * @param string $payer_id paypal支付的payer_id
      * @author wind <254044378@qq.com>
      */
-    public static function payOrder($params)
+    public static function payOrder($params, $isJson = false)
     {
         $json = PayClient::executeCall(
             "/api/paymentOrder/pay",
             "POST",
             $params
         );
-        return  PayResponse::fromModel($json);
+        return  $isJson ? $json : PayResponse::fromModel($json);
     }
     /**
      * 支付订单
@@ -77,13 +77,13 @@ class PayService
      * @param string $currency 币种编码
      * @author wind <254044378@qq.com>
      */
-    public static function paymentMethods($params)
+    public static function paymentMethods($params, $isJson = false)
     {   
         $json = PayClient::executeCall(
             "/api/paymentMethods?" . http_build_query($params),
             "GET",
             $params
         );
-        return  PayResponse::fromModel($json);
+        return  $isJson ? $json : PayResponse::fromModel($json);
     }
 }   
