@@ -10,7 +10,7 @@ class PayService
 {
 
     /**
-     * 创建支付订单
+     * 创建支付订单2000
      * @param string $payment_method_id 支付方式id
      * @param string $ace_store_id 站点id
      * @param string $payment_channel_id 渠道id
@@ -34,7 +34,7 @@ class PayService
     }
 
     /**
-     * 查询第三方的账单
+     * 查询第三方的账单3000
      *
      * @param string $ace_store_id 站点id
      * @param string $methods_name 支付方式名称
@@ -51,7 +51,7 @@ class PayService
         return  $isJson ? $json : PayResponse::fromModel($json);
     }
     /**
-     * 支付订单
+     * 支付订单2001
      *
      * @param string $ace_store_id 站点id
      * @param string $methods_name 支付方式名称
@@ -70,7 +70,7 @@ class PayService
         return  $isJson ? $json : PayResponse::fromModel($json);
     }
     /**
-     * 获取支付方式
+     * 获取支付方式2002
      *
      * @param string $ace_store_id 站点id
      * @param string $country  国家id
@@ -82,6 +82,23 @@ class PayService
         $json = PayClient::executeCall(
             "/api/paymentMethods?" . http_build_query($params),
             "GET",
+            $params
+        );
+        return  $isJson ? $json : PayResponse::fromModel($json);
+    }
+    /**
+     * 修改paypal支付图标3001
+     *
+     * @param string $ace_store_id 站点id
+     * @param string $country  国家id
+     * @param string $currency 币种编码
+     * @author wind <254044378@qq.com>
+     */
+    public static function paypalProfile($params, $isJson = false)
+    {   
+        $json = PayClient::executeCall(
+            "/api/paypalProfile",
+            "PUT",
             $params
         );
         return  $isJson ? $json : PayResponse::fromModel($json);

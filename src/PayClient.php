@@ -14,7 +14,7 @@ class PayClient extends Model
     public static $defaultCurlOptions = array(
         CURLOPT_CONNECTTIMEOUT => 10,
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 30,    // maximum number of seconds to allow cURL functions to execute
+        CURLOPT_TIMEOUT => 60,    // maximum number of seconds to allow cURL functions to execute
         CURLOPT_USERAGENT => 'Gateway-SDK',
         CURLOPT_HTTPHEADER => array(),
     );
