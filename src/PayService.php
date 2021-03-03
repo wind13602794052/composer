@@ -97,7 +97,7 @@ class PayService
     public static function paypalProfile($params, $isJson = false)
     {   
         $json = PayClient::executeCall(
-            "/api/paypalProfile",
+            "/setting/paypalProfile",
             "PUT",
             $params
         );
