@@ -1,6 +1,7 @@
 <?php
 namespace Payment\PaymentSdk;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 /**支付网关客户端 */
 class PayClient extends Model
 {
@@ -35,7 +36,7 @@ class PayClient extends Model
     public function __construct()
     {
         $this->curlOptions = self::$defaultCurlOptions;
-        $this->headers = ['Content-Type: application/json'];
+        $this->headers['Content-Type'] = 'application/json';
     }
 
     /**
@@ -50,6 +51,7 @@ class PayClient extends Model
     {   
         $url = $this->setPrefixUrl($url);
         $options = $this->getCurlOptions();
+        $this->setToken($data);
         $headers = $this->getHttpHeaders();
         if (is_array($data)) {
             $data = json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -86,6 +88,21 @@ class PayClient extends Model
         return $result;
     }
 
+    /**
+     * 设置token
+     *
+     * @param [type] $data
+     * @author wind <254044378@qq.com>
+     */
+    protected function setToken($data)
+    {
+        $currentTime = Carbon::now('Asia/Shanghai')->getTimestamp();
+        $this->addHeader('payment-time', $currentTime);
+        $key = env('AUTH_API', '');
+        krsort($data);
+        $token = md5($currentTime . json_encode($data) . $key);
+        $this->addHeader('payment-token', $token);
+    }
     /**
      * Parses the response headers for debugging.
      *
@@ -165,7 +182,11 @@ class PayClient extends Model
      */
     public function getHttpHeaders()
     {
-        return $this->headers;
+        $ret = array();
+        foreach ($this->headers as $k => $v) {
+            $ret[] = "$k: $v";
+        }
+        return $ret;
     }
 
     /**
