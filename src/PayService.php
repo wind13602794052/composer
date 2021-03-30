@@ -103,4 +103,37 @@ class PayService
         );
         return  $isJson ? $json : PayResponse::fromModel($json);
     }
+
+    /**
+     * worldPay渠道check2101
+     *
+     * @param [type] $params
+     * @param boolean $isJson
+     * @author wind <254044378@qq.com>
+     */
+    public static function worldPayCheck($params, $isJson = false)
+    {
+        $json = PayClient::executeCall(
+            "/api/worldPay/check",
+            "PUT",
+            $params
+        );
+        return  $isJson ? $json : PayResponse::fromModel($json);
+    }
+    /**
+     * worldPay渠道challenge
+     *
+     * @param [type] $params
+     * @param boolean $isJson
+     * @author wind <254044378@qq.com>
+     */
+    public static function worldPayChallenge($params, $isJson = false)
+    {
+        $json = PayClient::executeCall(
+            "/api/worldPay/challenge",
+            "PUT",
+            $params
+        );
+        return  $isJson ? $json : PayResponse::fromModel($json);
+    }
 }   
