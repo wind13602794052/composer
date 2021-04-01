@@ -25,7 +25,9 @@ class PayResponse extends Model
         /*捕捉其他返回错误*/
         if ($this->code < 500 && $this->code > 400) {
             $msg = $data['msg'] ?? '';
-            $msg = $data['message'] ?? '';
+            if (empty($msg)) {
+                $msg = $data['message'] ?? '';
+            }
             $this->error = $msg ?? '未知错误';
         }
         if (!empty($data['data']) && is_array($data['data'])) {
