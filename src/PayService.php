@@ -115,13 +115,13 @@ class PayService
     {
         $json = PayClient::executeCall(
             "/api/worldPay/check",
-            "PUT",
+            "POST",
             $params
         );
         return  $isJson ? $json : PayResponse::fromModel($json);
     }
     /**
-     * worldPay渠道challenge
+     * worldPay渠道challenge2102
      *
      * @param [type] $params
      * @param boolean $isJson
@@ -131,7 +131,7 @@ class PayService
     {
         $json = PayClient::executeCall(
             "/api/worldPay/challenge",
-            "PUT",
+            "POST",
             $params
         );
         return  $isJson ? $json : PayResponse::fromModel($json);
