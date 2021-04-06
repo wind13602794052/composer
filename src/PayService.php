@@ -136,4 +136,20 @@ class PayService
         );
         return  $isJson ? $json : PayResponse::fromModel($json);
     }
+    /**
+     * worldPay渠道capture2103
+     *
+     * @param [type] $params
+     * @param boolean $isJson
+     * @author wind <254044378@qq.com>
+     */
+    public static function worldPayCapture($params, $isJson = false)
+    {
+        $json = PayClient::executeCall(
+            "/api/worldPay/challenge",
+            "POST",
+            $params
+        );
+        return  $isJson ? $json : PayResponse::fromModel($json);
+    }
 }   
